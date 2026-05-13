@@ -1,22 +1,22 @@
 ## 1. Project Scaffolding
 
-- [ ] 1.1 Bootstrap a Next.js app with TypeScript: `npx create-next-app@latest --typescript`
-- [ ] 1.2 Install runtime dependencies: `@ant-design/cssinjs`, `antd`, `@dnd-kit/core`, `@dnd-kit/sortable`, `@prisma/client`
-- [ ] 1.3 Install dev dependencies: `prisma`
-- [ ] 1.4 Create directory structure: `app/api/`, `components/`, `lib/`, `styles/`, `prisma/`
-- [ ] 1.5 Add `.gitignore` excluding `.env.local`, `node_modules/`
-- [ ] 1.6 Create a root `README.md` with setup, environment variable, and run instructions
+- [x] 1.1 Bootstrap a Next.js app with TypeScript: `npx create-next-app@latest --typescript`
+- [x] 1.2 Install runtime dependencies: `@ant-design/cssinjs`, `antd`, `@dnd-kit/core`, `@dnd-kit/sortable`, `@prisma/client`
+- [x] 1.3 Install dev dependencies: `prisma`
+- [x] 1.4 Create directory structure: `app/api/`, `components/`, `lib/`, `styles/`, `prisma/`
+- [x] 1.5 Add `.gitignore` excluding `.env.local`, `node_modules/`
+- [x] 1.6 Create a root `README.md` with setup, environment variable, and run instructions
 
 ## 2. Database Layer (Prisma + Neon)
 
-- [ ] 2.1 Initialise Prisma: `npx prisma init` — creates `prisma/schema.prisma` and `.env`
-- [ ] 2.2 Set `provider = "postgresql"` in `schema.prisma` and configure `DATABASE_URL` pointing to Neon connection string
-- [ ] 2.3 Define `Column` model in `schema.prisma` (id, name, position, createdAt)
-- [ ] 2.4 Define `Task` model in `schema.prisma` (id, columnId FK, title, description, position, createdAt, updatedAt)
+- [x] 2.1 Initialise Prisma: `npx prisma init` — creates `prisma/schema.prisma` and `.env`
+- [x] 2.2 Set `provider = "postgresql"` in `schema.prisma` and configure `DATABASE_URL` pointing to Neon connection string
+- [x] 2.3 Define `Column` model in `schema.prisma` (id, name, position, createdAt)
+- [x] 2.4 Define `Task` model in `schema.prisma` (id, columnId FK, title, description, position, createdAt, updatedAt)
 - [ ] 2.5 Run `npx prisma migrate dev --name init` to create the initial migration
-- [ ] 2.6 Create `prisma/seed.ts` — insert the three default columns (Open pos=0, In Progress pos=1, Completed pos=2) if `Column` table is empty
+- [x] 2.6 Create `prisma/seed.ts` — insert the three default columns (Open pos=0, In Progress pos=1, Completed pos=2) if `Column` table is empty
 - [ ] 2.7 Add `prisma.seed` config to `package.json` and run `npx prisma db seed`
-- [ ] 2.8 Create `lib/prisma.ts` — export a Prisma client singleton (guards against multiple instances in Next.js dev hot-reload)
+- [x] 2.8 Create `lib/prisma.ts` — export a Prisma client singleton (guards against multiple instances in Next.js dev hot-reload)
 
 ## 3. Service Layer
 
