@@ -1,10 +1,17 @@
 'use client';
 
-import { DndContext, type DragEndEvent } from '@dnd-kit/core';
+import { useState } from 'react';
+import {
+  DndContext,
+  DragOverlay,
+  type DragEndEvent,
+  type DragStartEvent,
+} from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
 import { useBoard } from '@/hooks/useBoard';
-import type { ColumnWithTaskCount, TasksByColumn } from '@/lib/types';
+import type { ColumnWithTaskCount, Task, TasksByColumn } from '@/lib/types';
 import { Column } from '@/components/Column/Column';
+import { TaskCard } from '@/components/TaskCard/TaskCard';
 import { TaskModal } from '@/components/TaskModal/TaskModal';
 import styles from './Board.module.css';
 
@@ -14,6 +21,8 @@ interface BoardProps {
 }
 
 export function Board({ initialColumns, initialTasksByColumn }: BoardProps) {
+  const [activeTask, setActiveTask] = useState<Task | null>(null);
+
   const {
     columns,
     tasksByColumn,
@@ -29,7 +38,19 @@ export function Board({ initialColumns, initialTasksByColumn }: BoardProps) {
     closeModal,
   } = useBoard({ initialColumns, initialTasksByColumn });
 
+  function handleDragStart(event: DragStartEvent) {
+    const id = event.active.id as number;
+    for (const col of columns) {
+      const task = tasksByColumn[col.id]?.find((t) => t.id === id);
+      if (task) {
+        setActiveTask(task);
+        return;
+      }
+    }
+  }
+
   function handleDragEnd(event: DragEndEvent) {
+    setActiveTask(null);
     const { active, over } = event;
     if (!over || active.id === over.id) return;
 
@@ -58,7 +79,7 @@ export function Board({ initialColumns, initialTasksByColumn }: BoardProps) {
   }
 
   return (
-    <DndContext onDragEnd={handleDragEnd}>
+    <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <div className={styles.board}>
         {columns.map((column) => (
           <Column
@@ -74,6 +95,18 @@ export function Board({ initialColumns, initialTasksByColumn }: BoardProps) {
           />
         ))}
       </div>
+      <DragOverlay>
+        {activeTask ? (
+          <TaskCard
+            task={activeTask}
+            otherColumns={columns.filter((c) => c.id !== activeTask.columnId)}
+            onEdit={() => {}}
+            onDelete={() => {}}
+            onMove={() => {}}
+            isOverlay
+          />
+        ) : null}
+      </DragOverlay>
       <TaskModal
         modalState={modalState}
         onClose={closeModal}

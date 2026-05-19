@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, Select, Tooltip } from 'antd';
+import { Card, Select, Tooltip, Popconfirm } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -13,6 +13,7 @@ interface TaskCardProps {
   onEdit: () => void;
   onDelete: () => void;
   onMove: (toColumnId: number) => void;
+  isOverlay?: boolean;
 }
 
 export function TaskCard({
@@ -21,6 +22,7 @@ export function TaskCard({
   onEdit,
   onDelete,
   onMove,
+  isOverlay = false,
 }: TaskCardProps) {
   const {
     attributes,
@@ -29,7 +31,7 @@ export function TaskCard({
     transform,
     transition,
     isDragging,
-  } = useSortable({ id: task.id });
+  } = useSortable({ id: task.id, disabled: isOverlay });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -73,13 +75,21 @@ export function TaskCard({
           </Tooltip>
 
           <Tooltip title="Delete">
-            <DeleteOutlined
-              className={`${styles.actionIcon} ${styles.deleteIcon}`}
-              onClick={(e: React.MouseEvent) => {
-                e.stopPropagation();
+            <Popconfirm
+              title="Delete this task?"
+              onConfirm={(e) => {
+                e?.stopPropagation();
                 onDelete();
               }}
-            />
+              onCancel={(e) => e?.stopPropagation()}
+              okText="Delete"
+              okButtonProps={{ danger: true }}
+            >
+              <DeleteOutlined
+                className={`${styles.actionIcon} ${styles.deleteIcon}`}
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
+              />
+            </Popconfirm>
           </Tooltip>
         </div>
       </Card>

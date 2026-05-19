@@ -71,25 +71,25 @@
 
 ## 10. Task Create / Edit Modal
 
-- [ ] 10.1 Create a shared `TaskModal` component using AntD `Modal` + `Form` — fields: title (required), description (optional textarea)
-- [ ] 10.2 Wire "Add Task" button per column to open the modal in create mode with `columnId` preset
-- [ ] 10.3 Wire edit icon on task card to open the modal in edit mode pre-filled with existing task data
-- [ ] 10.4 On modal submit in **edit mode**: call `updateTask` from `useBoard()` — optimistic update, close modal immediately, rollback + `message.error()` on failure
-- [ ] 10.5 On modal submit in **create mode**: call `createTask` from `useBoard()` — keep modal open with a loading state until API responds; on success close modal and add card; on failure show inline AntD `Form` error message without closing the modal
+- [x] 10.1 Create a shared `TaskModal` component using AntD `Modal` + `Form` — fields: title (required), description (optional textarea)
+- [x] 10.2 Wire "Add Task" button per column to open the modal in create mode with `columnId` preset
+- [x] 10.3 Wire edit icon on task card to open the modal in edit mode pre-filled with existing task data
+- [x] 10.4 On modal submit in **edit mode**: call `updateTask` from `useBoard()` — optimistic update, close modal immediately, rollback + `message.error()` on failure
+- [x] 10.5 On modal submit in **create mode**: call `createTask` from `useBoard()` — keep modal open with a loading state until API responds; on success close modal and add card; on failure show inline AntD `Form` error message without closing the modal
 
 ## 11. Drag-and-Drop
 
-- [ ] 11.1 Configure `DndContext` in `Board.tsx` with `onDragEnd` handler
-- [ ] 11.2 On `onDragEnd`, branch on source vs. target column:
+- [x] 11.1 Configure `DndContext` in `Board.tsx` with `onDragEnd` handler
+- [x] 11.2 On `onDragEnd`, branch on source vs. target column:
   - Different columns → call `moveTask(taskId, fromColumnId, toColumnId)` from `useBoard()`
   - Same column → call `reorderTasks(columnId, newOrderedIds)` from `useBoard()`; compute `newOrderedIds` using `arrayMove` from `@dnd-kit/sortable`
-- [ ] 11.3 Add `DragOverlay` to render a ghost card while dragging
-- [ ] 11.4 Wire up the "Move to…" dropdown fallback: on `Select` change call the same `moveTask()` function from `useBoard()` — no duplicate API logic
+- [x] 11.3 Add `DragOverlay` to render a ghost card while dragging
+- [x] 11.4 Wire up the "Move to…" dropdown fallback: on `Select` change call the same `moveTask()` function from `useBoard()` — no duplicate API logic
 
 ## 12. Delete Task
 
-- [ ] 12.1 Wire delete icon on task card to show AntD `Popconfirm` ("Delete this task?")
-- [ ] 12.2 On confirm, call `deleteTask(taskId, columnId)` from `useBoard()` — the hook handles the API call and removes the card from local state
+- [x] 12.1 Wire delete icon on task card to show AntD `Popconfirm` ("Delete this task?")
+- [x] 12.2 On confirm, call `deleteTask(taskId, columnId)` from `useBoard()` — the hook handles the API call and removes the card from local state
 
 ## 13. Deployment
 
