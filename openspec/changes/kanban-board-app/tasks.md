@@ -20,9 +20,9 @@
 
 ## 3. Service Layer
 
-- [ ] 3.1 Create `lib/types.ts` — re-export `Column` and `Task` from `@prisma/client`; define `ColumnWithTaskCount`, `TasksByColumn` as the single source of truth for shared types used across services, route handlers, `page.tsx`, and components
-- [ ] 3.2 Create `lib/column-service.ts` — implement `getAll(): Promise<ColumnWithTaskCount[]>` (ordered by position, includes task count) and `rename(id, name): Promise<Column | null>` (returns null if not found)
-- [ ] 3.3 Create `lib/task-service.ts` — implement:
+- [x] 3.1 Create `lib/types.ts` — re-export `Column` and `Task` from `@prisma/client`; define `ColumnWithTaskCount`, `TasksByColumn` as the single source of truth for shared types used across services, route handlers, `page.tsx`, and components
+- [x] 3.2 Create `lib/column-service.ts` — implement `getAll(): Promise<ColumnWithTaskCount[]>` (ordered by position, includes task count) and `rename(id, name): Promise<Column | null>` (returns null if not found)
+- [x] 3.3 Create `lib/task-service.ts` — implement:
   - `getByColumnId(columnId)` — tasks ordered by position
   - `getByColumns(columnIds)` — returns `TasksByColumn` (used by `page.tsx` for server-side initial load)
   - `getById(id)` — returns `Task | null`
