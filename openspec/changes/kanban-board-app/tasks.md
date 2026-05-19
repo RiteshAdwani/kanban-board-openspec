@@ -60,14 +60,14 @@
 
 ## 8. Column Component
 
-- [ ] 8.1 Create `components/Column/Column.tsx` — render inline-editable column heading (click heading or pencil icon to activate an AntD `Input`; confirm on Enter or blur; cancel on Escape; call `renameColumn` from `useBoard()` on confirm); render task list via `SortableContext`; render "Add Task" button
-- [ ] 8.2 Create `components/Column/Column.module.css` — column card styling, header accent, min-width (280 px), full height; heading input styled borderless to match heading size
+- [x] 8.1 Create `components/Column/Column.tsx` — render inline-editable column heading (click heading or pencil icon to activate an AntD `Input`; confirm on Enter or blur; cancel on Escape; call `renameColumn` from `useBoard()` on confirm); render task list via `SortableContext`; render "Add Task" button
+- [x] 8.2 Create `components/Column/Column.module.css` — column card styling, header accent, min-width (280 px), full height; heading input styled borderless to match heading size
 
 ## 9. Task Card Component
 
-- [ ] 9.1 Create `components/TaskCard/TaskCard.tsx` — render AntD `Card` with title, truncated description (2 lines), edit and delete action icons; wrap with `useSortable` from `@dnd-kit/sortable`
-- [ ] 9.2 Create `components/TaskCard/TaskCard.module.css` — card hover elevation transition, description line-clamp
-- [ ] 9.3 Add a "Move to…" AntD `Select` dropdown on each card listing the other two columns as a touch-friendly fallback for drag-and-drop
+- [x] 9.1 Create `components/TaskCard/TaskCard.tsx` — render AntD `Card` with title, truncated description (2 lines), edit and delete action icons; wrap with `useSortable` from `@dnd-kit/sortable`
+- [x] 9.2 Create `components/TaskCard/TaskCard.module.css` — card hover elevation transition, description line-clamp
+- [x] 9.3 Add a "Move to…" AntD `Select` dropdown on each card listing the other two columns as a touch-friendly fallback for drag-and-drop
 
 ## 10. Task Create / Edit Modal
 
