@@ -1,0 +1,27 @@
+.board {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 24px;
+  overflow-x: auto;
+  min-height: calc(100vh - 64px);
+  align-items: flex-start;
+}
+
+.board > * {
+  min-width: 280px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .board {
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: unset;
+  }
+
+  .board > * {
+    min-width: unset;
+    width: 100%;
+  }
+}

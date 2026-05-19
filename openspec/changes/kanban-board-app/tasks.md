@@ -48,15 +48,15 @@
 
 ## 6. App Layout & AntD Setup
 
-- [ ] 6.1 Wrap `app/layout.tsx` with AntD `ConfigProvider` — configure theme tokens (colour palette, border radius, font)
-- [ ] 6.2 Apply `AntdRegistry` from `@ant-design/nextjs-registry` in `layout.tsx` for correct SSR style injection
+- [x] 6.1 Wrap `app/layout.tsx` with AntD `ConfigProvider` — configure theme tokens (colour palette, border radius, font)
+- [x] 6.2 Apply `AntdRegistry` from `@ant-design/nextjs-registry` in `layout.tsx` for correct SSR style injection
 
 ## 7. Board Page & State Hook
 
-- [ ] 7.1 Create `app/page.tsx` as an async Server Component — call `columnService.getAll()` and `taskService.getByColumns()` directly; add `export const dynamic = 'force-dynamic'`; pass `initialColumns` and `initialTasksByColumn` as props to `<Board />`
-- [ ] 7.2 Create `hooks/useBoard.ts` — owns all board state (`columns`, `tasksByColumn: Record<number, Task[]>`), modal state, and all mutation functions (`createTask`, `updateTask`, `moveTask`, `deleteTask`, `renameColumn`, `reorderTasks`); all mutations except `createTask` follow optimistic update → API call → rollback-on-error + `message.error()` pattern; `reorderTasks` uses `arrayMove` from `@dnd-kit/sortable` for the optimistic state update; include a private `notifyError(action: string)` helper that calls `message.error(`Failed to ${action}. Please try again.`)` — used by all mutation error handlers
-- [ ] 7.3 Create `components/Board/Board.tsx` — `"use client"`; call `useBoard({ initialColumns, initialTasksByColumn })`; render columns side-by-side in a horizontally scrollable flex container; wrap with `DndContext`; render a single `<TaskModal>` instance controlled by the hook
-- [ ] 7.4 Create `components/Board/Board.module.css` — flex row layout, `overflow-x: auto`, `min-width` per column, responsive stacking below 768 px
+- [x] 7.1 Create `app/page.tsx` as an async Server Component — call `columnService.getAll()` and `taskService.getByColumns()` directly; add `export const dynamic = 'force-dynamic'`; pass `initialColumns` and `initialTasksByColumn` as props to `<Board />`
+- [x] 7.2 Create `hooks/useBoard.ts` — owns all board state (`columns`, `tasksByColumn: Record<number, Task[]>`), modal state, and all mutation functions (`createTask`, `updateTask`, `moveTask`, `deleteTask`, `renameColumn`, `reorderTasks`); all mutations except `createTask` follow optimistic update → API call → rollback-on-error + `message.error()` pattern; `reorderTasks` uses `arrayMove` from `@dnd-kit/sortable` for the optimistic state update; include a private `notifyError(action: string)` helper that calls `message.error(`Failed to ${action}. Please try again.`)` — used by all mutation error handlers
+- [x] 7.3 Create `components/Board/Board.tsx` — `"use client"`; call `useBoard({ initialColumns, initialTasksByColumn })`; render columns side-by-side in a horizontally scrollable flex container; wrap with `DndContext`; render a single `<TaskModal>` instance controlled by the hook
+- [x] 7.4 Create `components/Board/Board.module.css` — flex row layout, `overflow-x: auto`, `min-width` per column, responsive stacking below 768 px
 
 ## 8. Column Component
 
